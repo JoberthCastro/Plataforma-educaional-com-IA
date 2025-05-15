@@ -1,0 +1,59 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap');
+
+:root {
+  --undb-pink: #e6007e;
+  --undb-purple: #a100ff;
+  --undb-blue: #2563eb;
+  --undb-bg: #f7f7fa;
+  --undb-card: #fff;
+  --undb-gray: #e5e7eb;
+  --undb-dark: #23272f;
+  --undb-green: #22c55e;
+}
+
+body {
+  background: var(--undb-bg);
+  color: var(--undb-dark);
+  font-family: 'Inter', Arial, sans-serif;
+  margin: 0;
+  min-height: 100vh;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: flex-start;
+}
+
+#root {
+  width: 100vw;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: flex-start;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+a {
+  color: var(--undb-pink);
+  text-decoration: none;
+  font-weight: 600;
+}
+a:hover {
+  text-decoration: underline;
+}
+
+:focus {
+  outline: 2px solid var(--undb-blue);
+  outline-offset: 2px;
+}
+
+@media (max-width: 600px) {
+  #root {
+    padding: 0 0.5rem;
+  }
+}

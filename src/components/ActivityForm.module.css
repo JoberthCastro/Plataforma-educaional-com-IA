@@ -1,0 +1,203 @@
+.activityFormWrapper {
+  width: 100%;
+  max-width: 600px;
+  margin: 48px auto 32px auto;
+  display: flex;
+  flex-direction: column;
+  gap: 32px;
+}
+
+.card {
+  background: var(--undb-card);
+  border-radius: 16px;
+  box-shadow: 0 4px 24px #0001;
+  padding: 28px 28px 20px 28px;
+  display: flex;
+  flex-direction: column;
+  gap: 18px;
+  border: 1.5px solid var(--undb-pink);
+}
+
+@media (max-width: 600px) {
+  .card {
+    padding: 14px 6px 12px 6px;
+  }
+  .activityFormWrapper {
+    margin: 18px auto 12px auto;
+  }
+}
+
+.cardTitle {
+  font-size: 1.18rem;
+  font-weight: 700;
+  color: var(--undb-pink);
+  margin-bottom: 2px;
+  letter-spacing: -0.5px;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.cardTitle .step {
+  background: var(--undb-pink);
+  color: #fff;
+  border-radius: 50%;
+  width: 1.7em;
+  height: 1.7em;
+  font-size: 0.95em;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  font-weight: 700;
+  margin-right: 6px;
+}
+
+.formGroup {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+
+.formLabel {
+  font-weight: 600;
+  color: var(--undb-dark);
+  margin-bottom: 2px;
+  font-size: 1.01rem;
+}
+
+.formInput, .formTextarea, .formSelect {
+  padding: 12px 14px;
+  border-radius: 10px;
+  border: 1.5px solid var(--undb-gray);
+  font-size: 1rem;
+  background: #f7f9fa;
+  color: var(--undb-dark);
+  outline: none;
+  transition: border 0.2s;
+  font-family: inherit;
+  box-shadow: 0 1px 2px #0001;
+}
+.formInput:focus, .formTextarea:focus, .formSelect:focus {
+  border: 1.5px solid var(--undb-pink);
+}
+
+.fieldsRow {
+  display: flex;
+  gap: 10px;
+  align-items: flex-end;
+  margin-bottom: 0;
+}
+
+.addFieldBtn {
+  padding: 12px 18px;
+  border-radius: 10px;
+  background: var(--undb-pink);
+  color: #fff;
+  border: none;
+  font-weight: 600;
+  font-size: 1rem;
+  cursor: pointer;
+  transition: background 0.2s, transform 0.2s;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  box-shadow: 0 2px 8px #e6007e22;
+  margin-left: auto;
+}
+.addFieldBtn:hover {
+  background: var(--undb-purple);
+  transform: scale(1.04);
+}
+
+.fieldsList {
+  margin-bottom: 0;
+  padding-left: 0;
+}
+.fieldsList li {
+  list-style: none;
+  padding: 10px 14px;
+  background: #f3f6fa;
+  border-radius: 9px;
+  margin-bottom: 7px;
+  border: 1.5px solid var(--undb-gray);
+  font-size: 1rem;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  color: var(--undb-dark);
+}
+
+.alunosList {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 12px;
+  margin-bottom: 0;
+}
+
+.alunoCard {
+  background: #f7f9fa;
+  border: 1.5px solid var(--undb-gray);
+  border-radius: 12px;
+  padding: 10px 18px 10px 12px;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  font-size: 1rem;
+  color: var(--undb-dark);
+  box-shadow: 0 1px 4px #0001;
+  min-width: 120px;
+  cursor: pointer;
+  transition: border 0.18s, box-shadow 0.18s;
+}
+.alunoCard.selected {
+  border: 2px solid var(--undb-pink);
+  background: #fce4f4;
+  box-shadow: 0 2px 8px #e6007e22;
+}
+.alunoAvatar {
+  width: 28px;
+  height: 28px;
+  border-radius: 50%;
+  background: var(--undb-pink);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1.1rem;
+  font-weight: 700;
+  color: #fff;
+}
+
+.saveBtn {
+  margin-top: 0;
+  padding: 16px 0;
+  font-size: 1.13rem;
+  font-weight: bold;
+  background: var(--undb-green);
+  color: #fff;
+  border: none;
+  border-radius: 12px;
+  box-shadow: 0 2px 8px #22c55e22;
+  cursor: pointer;
+  transition: background 0.2s, transform 0.2s;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  width: 100%;
+}
+.saveBtn:hover {
+  background: #16a34a;
+  transform: scale(1.03);
+}
+
+@media (max-width: 600px) {
+  .fieldsRow {
+    flex-direction: column;
+    align-items: stretch;
+    gap: 8px;
+  }
+  .addFieldBtn {
+    width: 100%;
+    margin-left: 0;
+  }
+} 
