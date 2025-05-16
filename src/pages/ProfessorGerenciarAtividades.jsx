@@ -2,7 +2,6 @@ import React, { useEffect, useState } from 'react';
 
 const alunosFicticios = [
   { id: 'aluno1', nome: 'Ana Souza' },
-  { id: 'aluno2', nome: 'Carlos Lima' },
 ];
 
 function ProfessorGerenciarAtividades() {

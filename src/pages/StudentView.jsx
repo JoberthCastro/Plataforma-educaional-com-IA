@@ -89,7 +89,7 @@ function StudentView() {
       return (
         <div style={{ minHeight: '100vh', background: '#f3f4f6', display: 'flex', justifyContent: 'center', alignItems: 'flex-start', padding: 0 }}>
           <div style={{ background: '#fff', borderRadius: 18, boxShadow: '0 0 32px rgba(0,0,0,0.10)', width: '98vw', maxWidth: 1800, padding: 100, display: 'flex', flexDirection: 'column', alignItems: 'center', justifyContent: 'center' }}>
-            <img src="/undb-logo.png" alt="Logo UNDB" style={{ width: 80, height: 80, borderRadius: 18, marginBottom: 24 }} />
+            <img src="/images/logo-undb.png" alt="Logo UNDB" style={{ width: 80, height: 80, borderRadius: 18, marginBottom: 24 }} />
             <h2 style={{ fontWeight: 700, fontSize: 48, color: '#2563eb', marginBottom: 24, textAlign: 'center' }}>{atividadeSelecionada.titulo}</h2>
             <div style={{ color: '#d946ef', fontSize: 32, marginBottom: 40, textAlign: 'center', fontWeight: 600 }}>Você já respondeu esta atividade.</div>
             <button onClick={() => setAtividadeSelecionada(null)} style={{ background: '#e5e7eb', color: '#333', padding: '24px 80px', border: 'none', borderRadius: 14, fontWeight: 600, fontSize: 28, cursor: 'pointer', transition: 'background 0.2s' }}>Voltar</button>
@@ -105,7 +105,7 @@ function StudentView() {
         <div style={{ background: '#fff', borderRadius: 18, boxShadow: '0 0 32px rgba(0,0,0,0.10)', width: '98vw', maxWidth: 1800, padding: 0 }}>
           {/* Cabeçalho da prova */}
           <div style={{ background: '#2563eb', borderTopLeftRadius: 18, borderTopRightRadius: 18, padding: '48px 100px 32px 100px', color: '#fff', display: 'flex', flexDirection: 'column', gap: 12, alignItems: 'center' }}>
-            <img src="/undb-logo.png" alt="Logo UNDB" style={{ width: 80, height: 80, borderRadius: 18, marginBottom: 10 }} />
+            <img src="/images/logo-undb.png" alt="Logo UNDB" style={{ width: 80, height: 80, borderRadius: 18, marginBottom: 10 }} />
             <div style={{ fontSize: 44, fontWeight: 700, letterSpacing: 0.5, textAlign: 'center' }}>{atividadeSelecionada.titulo}</div>
             <div style={{ fontSize: 26, fontWeight: 400, textAlign: 'center', marginBottom: 6 }}>Aluno: <b>{alunoNome}</b></div>
             {dataAtividade && <div style={{ fontSize: 22 }}>Data da Atividade: {dataAtividade}</div>}

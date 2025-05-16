@@ -4,7 +4,7 @@ from pydantic import BaseModel
 import os
 from dotenv import load_dotenv
 import google.generativeai as genai
-import logging # Importa o módulo logging
+import logging
 
 # Configura o logging
 logging.basicConfig(level=logging.INFO)
@@ -22,39 +22,16 @@ if not GEMINI_API_KEY:
 
 genai.configure(api_key=GEMINI_API_KEY)
 
-# --- Adicionado: Verificação de modelos disponíveis ---
-# O log abaixo mostra os modelos disponíveis que suportam generateContent.
-# Use um desses nomes para a variável model_name_to_use se 'gemini-pro' não funcionar.
-# A saída do terminal anterior mostrou que 'gemini-pro' não está disponível.
-# Estamos alterando para 'models/gemini-1.5-pro' como um modelo de texto geral disponível.
-try:
-    logger.info("Tentando listar modelos disponíveis...")
-    for m in genai.list_models():
-        # Verifica se o modelo suporta a operação generateContent
-        if 'generateContent' in m.supported_generation_methods:
-            logger.info(f"Modelo disponível que suporta generateContent: {m.name}")
-
-except Exception as e:
-    logger.error(f"Erro ao listar modelos: {e}")
-    # Em um ambiente de produção, você pode querer lidar com isso de forma diferente
-    logger.warning("Não foi possível listar modelos. Verifique a conexão ou a chave da API.")
-
-
-# Define o nome do modelo a ser usado.
-# Alterado de 'gemini-pro' para um modelo disponível que suporta generateContent,
-# com base na saída do terminal anterior. 'models/gemini-1.5-pro' é um bom candidato.
+# Nome do modelo a ser usado
 model_name_to_use = 'models/gemini-1.5-pro'
 logger.info(f"Nome do modelo configurado para uso: {model_name_to_use}")
-
-# --- Fim da adição ---
-
 
 app = FastAPI()
 
 # Configuração do CORS
 app.add_middleware(
     CORSMiddleware,
-    allow_origins=["*"],  # Em produção, especifique as origens permitidas
+    allow_origins=["*"],
     allow_credentials=True,
     allow_methods=["*"],
     allow_headers=["*"],
@@ -66,41 +43,59 @@ class QuestaoRequest(BaseModel):
 def generate_adapted_question(input_text: str, tipo: str):
     if tipo == "TDAH":
         system_instruction = (
-            "Você é um revisor de provas escolares. Sua tarefa é adaptar questões de prova para alunos com TDAH, "
-            "reescrevendo-as de forma mais clara, simples e direta, sem mudar o conteúdo pedagógico.\n"
-            "Siga estas regras:\n"
-            "- Use frases curtas e objetivas\n"
-            "- Evite palavras complexas ou ambíguas\n"
-            "- Prefira estrutura em tópicos, quando possível\n"
-            "- Mantenha o mesmo nível escolar e disciplina da questão original\n" # Removido destaque com negrito
-            "- Nunca responda a pergunta, apenas reescreva\n"
-            # Exemplo de adaptação ajustado sem negrito
-            "Exemplo:\n"
+            "Você é um revisor de provas. Sua tarefa é adaptar questões para alunos com TDAH.\n"
+            "REGRAS IMPORTANTES:\n"
+            "- NÃO EXPLIQUE a questão.\n"
+            "- NÃO INTERPRETE nem dê opinião.\n"
+            "- NÃO diga se a frase está confusa.\n"
+            "- NÃO responda à pergunta.\n"
+            "- NÃO dê dicas ou pistas sobre a resposta.\n"
+            "- NÃO altere o desafio, lógica ou objetivo da questão.\n"
+            "- NÃO simplifique o conteúdo pedagógico.\n"
+            "- Apenas reescreva a questão de forma mais clara e direta.\n"
+            "- Use frases curtas e objetivas.\n"
+            "- Use palavras simples.\n"
+            "- Mantenha o conteúdo, sentido, desafio e lógica original.\n"
+            "EXEMPLO:\n"
             "Original: 'Explique como funciona o ciclo da água, citando os principais processos envolvidos.'\n"
             "Adaptado: 'Explique o ciclo da água. Fale dos processos principais.'"
         )
-    else: # Assumimos DISLEXIA
+    else:  # DISLEXIA
         system_instruction = (
-            "Você é um revisor de provas escolares. Sua tarefa é adaptar questões de prova para alunos com dislexia, "
-            "tornando-as mais acessíveis visualmente e fáceis de ler.\n"
-            "Siga estas regras:\n"
-            "- Use frases curtas e simples\n"
-            "- Use palavras comuns, evite termos difíceis\n"
-            "- Separe informações em tópicos curtos\n"
-            "- Evite frases muito longas ou com muitas vírgulas\n"
-            "- Use exemplos quando ajudar na compreensão\n"
-            "- Mantenha o conteúdo pedagógico original\n" # Removido destaque com negrito
-            "- Nunca responda à pergunta, apenas reescreva\n"
-            # Exemplo de adaptação ajustado sem negrito
-            "Exemplo:\n"
-            "Original: 'Explique como funciona o ciclo da água, citando os principais processos envolvidos.'\n"
-            "Adaptado: 'Explique o ciclo da água. Fale dos processos principais.'" # Mantido 'chuva' no exemplo para dislexia, removido negrito
+            "Você é um revisor de provas. Sua tarefa é adaptar questões para alunos com dislexia.\n"
+            "REGRAS IMPORTANTES:\n"
+            "- NÃO EXPLIQUE a questão.\n"
+            "- NÃO INTERPRETE nem dê opinião.\n"
+            "- NÃO diga se a frase está confusa.\n"
+            "- NÃO responda à pergunta.\n"
+            "- NÃO dê dicas ou pistas sobre a resposta.\n"
+            "- NÃO altere o desafio, lógica ou objetivo da questão.\n"
+            "- NÃO simplifique o conteúdo pedagógico.\n"
+            "- Apenas reescreva a questão para facilitar a leitura.\n"
+            "- Use palavras simples e frases curtas.\n"
+            "- Separe em tópicos, se necessário.\n"
+            "- Mantenha o conteúdo, sentido, desafio e lógica original da pergunta."
         )
-    prompt = f"{system_instruction}\n\nQuestão original:\n{input_text}\n\nRetorne apenas a questão adaptada, sem explicações adicionais."
-    # Usa o nome do modelo determinado na inicialização
-    model = genai.GenerativeModel(model_name_to_use)
-    response = model.generate_content(prompt)
-    return response.text
+
+    model = genai.GenerativeModel(
+        model_name_to_use,
+        system_instruction=system_instruction
+    )
+
+    try:
+        response = model.generate_content(
+            f"Questão original: {input_text}\nReescreva a questão adaptada, obedecendo estritamente às regras acima. Não explique, não opine, não interprete, não dê dicas e não responda. Mantenha o mesmo desafio e lógica da questão original.",
+            generation_config={
+                "temperature": 0.5,
+                "top_p": 1,
+                "top_k": 40,
+                "max_output_tokens": 512,
+            }
+        )
+        return response.text
+    except Exception as e:
+        logger.error(f"Erro ao gerar conteúdo: {e}", exc_info=True)
+        raise
 
 @app.post("/adaptar-tdah")
 async def adaptar_tdah(request: QuestaoRequest):
@@ -108,7 +103,6 @@ async def adaptar_tdah(request: QuestaoRequest):
         questao_adaptada = generate_adapted_question(request.questao, "TDAH")
         return {"questao_adaptada": questao_adaptada}
     except Exception as e:
-        logger.error(f"ERRO GEMINI TDAH: {e}", exc_info=True) # Loga o traceback completo
         raise HTTPException(status_code=500, detail=str(e))
 
 @app.post("/adaptar-dislexia")
@@ -117,7 +111,6 @@ async def adaptar_dislexia(request: QuestaoRequest):
         questao_adaptada = generate_adapted_question(request.questao, "DISLEXIA")
         return {"questao_adaptada": questao_adaptada}
     except Exception as e:
-        logger.error(f"ERRO GEMINI DISLEXIA: {e}", exc_info=True) # Loga o traceback completo
         raise HTTPException(status_code=500, detail=str(e))
 
 if __name__ == "__main__":

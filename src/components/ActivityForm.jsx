@@ -4,7 +4,6 @@ import styles from './ActivityForm.module.css';
 
 const alunosFicticios = [
   { id: 'aluno1', nome: 'Ana Souza' },
-  { id: 'aluno2', nome: 'Carlos Lima' },
 ];
 
 function getInitials(nome) {
@@ -235,7 +234,7 @@ function ActivityForm() {
   return (
     <div className={styles.activityFormWrapper} style={{ width: '100%', maxWidth: 900, margin: '0 auto', padding: 0 }}>
       <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', gap: 12, marginBottom: 24 }}>
-        <img src="/undb-logo.png" alt="Logo UNDB" style={{ width: 80, height: 80, borderRadius: 18, marginBottom: 8 }} />
+        {/* <img src="/images/logo-undb.png" alt="Logo UNDB" style={{ width: 80, height: 80, borderRadius: 18, marginBottom: 8 }} /> */}
         <h1 style={{ fontWeight: 700, fontSize: 40, color: '#d946ef', margin: 0, textAlign: 'center', marginBottom: 8 }}>Criar Nova Atividade</h1>
         <p style={{ color: '#2563eb', fontSize: 22, background: '#e0e7ff', borderRadius: 10, padding: 18, margin: 0, textAlign: 'center', border: '1.5px solid #2563eb', fontWeight: 600, marginBottom: 18, maxWidth: 700 }}>
           Preencha os detalhes abaixo para configurar uma nova atividade educacional.
@@ -247,14 +246,6 @@ function ActivityForm() {
         <div className={styles.formGroup} style={{ marginBottom: 28 }}>
           <label className={styles.formLabel} htmlFor="titulo" style={{ fontSize: 22, fontWeight: 600, marginBottom: 10 }}>Título</label>
           <input id="titulo" value={titulo} onChange={e => setTitulo(e.target.value)} className={styles.formInput} placeholder="Ex: Questionário sobre Iluminismo" autoComplete="off" style={{ fontSize: 22, padding: '18px 20px', borderRadius: 10, border: '1.5px solid #b3b3b3', marginBottom: 18, width: '100%', background: '#f7f9fa' }} />
-        </div>
-        <div className={styles.formGroup} style={{ marginBottom: 28 }}>
-          <label className={styles.formLabel} htmlFor="data" style={{ fontSize: 22, fontWeight: 600, marginBottom: 10 }}>Data da Atividade</label>
-          <input id="data" type="date" value={novoCampo.data || ''} onChange={e => setNovoCampo({ ...novoCampo, data: e.target.value })} className={styles.formInput} style={{ fontSize: 22, padding: '18px 20px', borderRadius: 10, border: '1.5px solid #b3b3b3', marginBottom: 18, width: '100%', background: '#f7f9fa' }} />
-        </div>
-        <div className={styles.formGroup} style={{ marginBottom: 28 }}>
-          <label className={styles.formLabel} htmlFor="dataLimite" style={{ fontSize: 22, fontWeight: 600, marginBottom: 10 }}>Data Limite</label>
-          <input id="dataLimite" type="date" value={novoCampo.dataLimite || ''} onChange={e => setNovoCampo({ ...novoCampo, dataLimite: e.target.value })} className={styles.formInput} style={{ fontSize: 22, padding: '18px 20px', borderRadius: 10, border: '1.5px solid #b3b3b3', marginBottom: 18, width: '100%', background: '#f7f9fa' }} />
         </div>
         <div className={styles.formGroup} style={{ marginBottom: 28 }}>
           <label className={styles.formLabel} htmlFor="descricao" style={{ fontSize: 22, fontWeight: 600, marginBottom: 10 }}>Descrição / Instruções</label>
@@ -287,8 +278,8 @@ function ActivityForm() {
             renderCamposAdicionados()
           )}
         </div>
-        <div className={styles.fieldsRow} style={{ marginTop: 32, gap: 32 }}>
-          <div style={{ position: 'relative', minWidth: 220 }}>
+        <div className={styles.fieldsRow} style={{ marginTop: 32, gap: 32, alignItems: 'center' }}>
+          <div style={{ position: 'relative', minWidth: 220, display: 'flex', alignItems: 'center', height: '100%' }}>
             <button
               type="button"
               style={{ padding: '18px 24px', borderRadius: 10, border: '1.5px solid #b3b3b3', background: '#f7f9fa', cursor: 'pointer', fontWeight: 700, fontSize: 20, minWidth: 180 }}

@@ -3,7 +3,6 @@ import React, { useEffect, useState } from 'react';
 // Lista de alunos fictícios (igual ao do formulário)
 const alunosFicticios = [
   { id: 'aluno1', nome: 'Ana Souza' },
-  { id: 'aluno2', nome: 'Carlos Lima' },
 ];
 
 function ProfessorRespostas() {

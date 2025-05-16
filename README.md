@@ -36,34 +36,54 @@ Este projeto é uma plataforma educacional desenvolvida em React, utilizando Vit
 - **src/pages/**: Páginas principais (ex: StudentView, ProfessorView, SelectProfile).
 - **src/**: Arquivos de entrada e configuração do React.
 
-## ⚙️ Como rodar o projeto localmente
+## 🚀 Como rodar o backend (FastAPI)
 
-1. **Clone o repositório:**
+1. Abra o terminal e navegue até a pasta `backend`:
    ```sh
-   git clone https://github.com/seu-usuario/seu-repositorio.git
-   cd seu-repositorio
+   cd backend
    ```
+2. Instale as dependências do backend:
+   ```sh
+   pip install -r requirements.txt
+   ```
+3. (Opcional, mas recomendado) Crie um arquivo `.env` na pasta `backend` com sua chave da API Google Gemini:
+   ```env
+   GEMINI_API_KEY=sua_chave_aqui
+   ```
+4. Inicie o servidor FastAPI com recarregamento automático:
+   ```sh
+   python -m uvicorn main:app --reload
+   ```
+   O backend estará disponível em [http://localhost:8000](http://localhost:8000).
 
-2. **Instale as dependências:**
+   > Se aparecer erro de comando não encontrado, tente:
+   > ```sh
+   > python -m uvicorn main:app --reload
+   > ```
+
+### Possíveis problemas e soluções
+- **Erro `ModuleNotFoundError: No module named 'google.generativeai'`**
+  > Execute: `pip install google-generativeai`
+- **Erro `uvicorn : O termo 'uvicorn' não é reconhecido...`**
+  > Use: `python -m uvicorn main:app --reload`
+- **Problemas de PATH no Windows**
+  > Sempre prefira o comando acima com `python -m ...` para evitar problemas de PATH.
+
+## 🚀 Como rodar o frontend (React)
+
+1. Abra o terminal e navegue até a pasta raiz do projeto:
+   ```sh
+   cd Plataforma-educaional-com-IA
+   ```
+2. Instale as dependências do frontend:
    ```sh
    npm install
    ```
-
-3. **Inicie o servidor de desenvolvimento:**
+3. Inicie o servidor de desenvolvimento React:
    ```sh
    npm run dev
    ```
-   O projeto estará disponível em [http://localhost:5173](http://localhost:5173) (ou outra porta indicada no terminal).
-
-4. **Build para produção:**
-   ```sh
-   npm run build
-   ```
-
-5. **Preview do build de produção:**
-   ```sh
-   npm run preview
-   ```
+   O frontend estará disponível em [http://localhost:5173](http://localhost:5173) (ou outra porta indicada no terminal).
 
 ## 🧹 Lint
 

@@ -9,7 +9,7 @@ function ProfessorView() {
     <div style={{ minHeight: '100vh', background: '#f3f4f6', display: 'flex', justifyContent: 'center', alignItems: 'center', padding: 0 }}>
       <div style={{ background: '#fff', borderRadius: 18, boxShadow: '0 0 32px rgba(0,0,0,0.10)', width: '90vw', maxWidth: 1600, minHeight: 600, padding: '60px 80px', display: 'flex', flexDirection: 'column', alignItems: 'center', margin: 40 }}>
         <div style={{ display: 'flex', alignItems: 'center', gap: 24, marginBottom: 32 }}>
-          <img src="/undb-logo.png" alt="Logo UNDB" style={{ width: 100, height: 100, borderRadius: 18 }} />
+          <img src="/images/logo-undb.png" alt="Logo UNDB" style={{ width: 100, height: 100, borderRadius: 18 }} />
           <span style={{ fontWeight: 700, fontSize: 36, color: 'var(--undb-pink, #d946ef)' }}>{nomeProfessor && `Professor(a): ${nomeProfessor}`}</span>
         </div>
         <div style={{ width: '100%', maxWidth: 900 }}>
