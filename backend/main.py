@@ -52,13 +52,14 @@ def generate_adapted_question(input_text: str, tipo: str):
             "- NÃO dê dicas ou pistas sobre a resposta.\n"
             "- NÃO altere o desafio, lógica ou objetivo da questão.\n"
             "- NÃO simplifique o conteúdo pedagógico.\n"
-            "- Apenas reescreva a questão de forma mais clara e direta.\n"
-            "- Use frases curtas e objetivas.\n"
-            "- Use palavras simples.\n"
-            "- Mantenha o conteúdo, sentido, desafio e lógica original.\n"
+            "- Adapte o texto para ser claro e direto para alunos com TDAH.\n"
+            "- Quebre frases longas e complexas em sentenças mais curtas e fáceis de processar.\n"
+            "- Apresente as informações de forma linear, clara e concisa.\n"
+            "- Mantenha todos os dados numéricos e fatos essenciais da questão original.\n"
+            "- A pergunta final deve ser clara e única.\n"
             "EXEMPLO:\n"
-            "Original: 'Explique como funciona o ciclo da água, citando os principais processos envolvidos.'\n"
-            "Adaptado: 'Explique o ciclo da água. Fale dos processos principais.'"
+            "Original: 'João, um estudante do ensino fundamental que estava comprando materiais escolares numa papelaria bastante movimentada da cidade, decidiu adquirir exatamente três unidades de lápis grafite do tipo HB, cada um ao valor de R$ 1,50. Além disso, ele comprou também uma borracha branca da mesma marca dos lápis, cujo preço era equivalente à metade do valor total que ele havia gasto com os três lápis, porém a atendente informou que a borracha estava com um desconto promocional de 20%, o qual foi aplicado no caixa, e a pergunta que se faz é: qual foi o valor total gasto por João ao final da compra, considerando todos os itens mencionados e o desconto aplicado?'\n"
+            "Adaptado: 'João comprou 3 lápis. Cada lápis custa R$ 1,50. Ele comprou 1 borracha. O preço da borracha era metade do preço dos 3 lápis. A borracha teve 20% de desconto. Quanto João gastou no total?'"
         )
     else:  # DISLEXIA
         system_instruction = (
@@ -71,10 +72,13 @@ def generate_adapted_question(input_text: str, tipo: str):
             "- NÃO dê dicas ou pistas sobre a resposta.\n"
             "- NÃO altere o desafio, lógica ou objetivo da questão.\n"
             "- NÃO simplifique o conteúdo pedagógico.\n"
-            "- Apenas reescreva a questão para facilitar a leitura.\n"
-            "- Use palavras simples e frases curtas.\n"
-            "- Separe em tópicos, se necessário.\n"
-            "- Mantenha o conteúdo, sentido, desafio e lógica original da pergunta."
+            "- Adapte o texto para ser fácil de ler para alunos com dislexia.\n"
+            "- Use vocabulário simples e frases curtas.\n"
+            "- Apresente as informações de forma direta, usando quebras de linha para separar ideias se necessário.\n"
+            "- Mantenha o conteúdo, sentido, desafio e lógica original da pergunta.\n"
+            "EXEMPLO:\n"
+            "Original: 'João comprou 3 lápis. Cada lápis custou R$ 1,50. Ele comprou uma borracha. A borracha custa metade do preço dos 3 lápis. A borracha tem 20% de desconto. Quanto João gastou no total?'\n"
+            "Adaptado: 'João comprou 3 lápis. Cada lápis custa R$ 1,50. Ele comprou 1 borracha. O preço da borracha era metade do preço dos 3 lápis. A borracha teve 20% de desconto. Quanto João gastou no total?'"
         )
 
     model = genai.GenerativeModel(

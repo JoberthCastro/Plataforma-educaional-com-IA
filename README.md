@@ -109,3 +109,30 @@ npm run lint
 ## 📄 Licença
 
 Este projeto está sob a licença MIT. Veja o arquivo [LICENSE](LICENSE) para mais detalhes.
+
+## Adaptação de Questões para TDAH e Dislexia
+
+Este projeto inclui uma funcionalidade no backend (`backend/main.py`) para adaptar questões educacionais utilizando a API do Google Gemini, visando facilitar a leitura e compreensão para alunos com Transtorno do Déficit de Atenção com Hiperatividade (TDAH) e Dislexia.
+
+As instruções (prompts) fornecidas à inteligência artificial foram refinadas para melhor atender às necessidades desses alunos:
+
+### Adaptação para TDAH
+
+Para alunos com TDAH, o prompt agora orienta a IA a:
+- Adaptar o texto para ser claro e direto.
+- Quebrar frases longas e complexas em sentenças mais curtas e fáceis de processar.
+- Apresentar as informações de forma linear, clara e concisa.
+- Manter todos os dados numéricos e fatos essenciais da questão original.
+- Garantir que a pergunta final seja clara e única, evitando induzir a múltiplas respostas intermediárias.
+
+### Adaptação para Dislexia
+
+Para alunos com Dislexia, o prompt agora orienta a IA a:
+- Adaptar o texto para ser fácil de ler.
+- Usar vocabulário simples e frases curtas.
+- Apresentar as informações de forma direta, utilizando quebras de linha para separar ideias se necessário.
+- Manter o conteúdo original e a pergunta final da questão.
+
+Essas instruções, juntamente com exemplos específicos no código, ajudam a garantir que as questões adaptadas sejam mais acessíveis sem perder o sentido ou o desafio original.
+
+As questões de exemplo utilizadas para teste desta funcionalidade podem ser encontradas neste documento: [PERGUNTAS TESTE PARA SISTEMA DE TDAH E DISLEXIA](https://docs.google.com/document/d/1iBTRJ2CwOeDuB_oNx-a4vrX8sSDvalX7yGejg60fJJ8/edit?usp=sharing)
