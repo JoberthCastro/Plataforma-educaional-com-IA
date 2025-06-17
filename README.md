@@ -135,4 +135,4 @@ Para alunos com Dislexia, o prompt agora orienta a IA a:
 
 Essas instruções, juntamente com exemplos específicos no código, ajudam a garantir que as questões adaptadas sejam mais acessíveis sem perder o sentido ou o desafio original.
 
-As questões de exemplo utilizadas para teste desta funcionalidade podem ser encontradas neste documento: [PERGUNTAS TESTE PARA SISTEMA DE TDAH E DISLEXIA](https://docs.google.com/document/d/1iBTRJ2CwOeDuB_oNx-a4vrX8sSDvalX7yGejg60fJJ8/edit?usp=sharing)
+As questões de exemplo utilizadas para teste desta funcionalidade podem ser encontradas neste documento: [PERGUNTAS TESTE PARA SISTEMA DE TDAH E DISLEXIA](https://docs.google.com/document/d/1iBTRJ2CwOeDuB_oNx-a4vrX8sSDvalX7yGejg60fJJ8/edit?us p=sharing)
